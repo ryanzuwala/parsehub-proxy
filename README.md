@@ -1,5 +1,18 @@
 # README
 
+
+Setup
+------
+
+* `rbenv install`
+* `gem install bundler`
+* `bundle install`
+
+Running the web service locally
+-------
+
+`bundle exec rails s`
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

@@ -4,16 +4,17 @@ class ProxyController < ActionController::Base
 
   # GET requests
   def show
-    response = HTTPProxyService.send :get, request, params
-
-    respond_to do |format|
-      format.html { render html: response }
-    end
+    produce_response :get
   end
 
   # POST requests
   def create
-    response = HTTPProxyService.send :post, request, params
+    produce_response :post
+  end
+
+  private
+  def produce_response(method)
+    response = HTTPProxyService.send method, request, params
 
     respond_to do |format|
       format.html { render html: response }

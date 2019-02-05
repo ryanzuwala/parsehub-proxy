@@ -27,9 +27,9 @@ class ProxyController < ActionController::Base
         req = Net::HTTP::Get.new(url)
         req["User-Agent"] = request.headers["User-Agent"]
 
-        res = Net::HTTP.start(url.host, url.port) { |http|
-            http.request(req)
-        }
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = (url.scheme == "https")
+        res = http.request(req)
 
         res.body.html_safe
     end
